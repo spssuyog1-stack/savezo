@@ -8,15 +8,24 @@ const publicDir = path.join(__dirname, 'public');
 
 app.use(express.static(publicDir));
 
-// Explicitly serve SEO files
+// SEO files
 app.get('/robots.txt', (req, res) => {
-  res.type('text/plain');
-  res.sendFile(path.join(publicDir, 'robots.txt'));
+  res.type('text/plain').sendFile(path.join(publicDir, 'robots.txt'));
 });
 
 app.get('/sitemap.xml', (req, res) => {
-  res.type('application/xml');
-  res.sendFile(path.join(publicDir, 'sitemap.xml'));
+  const xml = `<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url><loc>https://savezo-production.up.railway.app/</loc></url>
+  <url><loc>https://savezo-production.up.railway.app/about.html</loc></url>
+  <url><loc>https://savezo-production.up.railway.app/contact.html</loc></url>
+  <url><loc>https://savezo-production.up.railway.app/privacy.html</loc></url>
+  <url><loc>https://savezo-production.up.railway.app/terms.html</loc></url>
+  <url><loc>https://savezo-production.up.railway.app/disclaimer.html</loc></url>
+</urlset>`;
+
+  res.set('Content-Type', 'text/xml; charset=utf-8');
+  res.status(200).send(xml);
 });
 
 // Main site
