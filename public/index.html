@@ -1,213 +1,353 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="description" content="Savezo - free everyday calculators and useful tools for India. GST, salary, CTC and CGPA calculators.">
-<title>Savezo — Everyday Tools</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Savezo - free everyday calculators for India, students and office work.">
+<title>Savezo - Free Everyday Utility Tools</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
+:root{
+  --bg:#f7f9fc; --card:#fff; --text:#14213d; --muted:#60708a; --border:#e2e8f0;
+  --blue:#2457d6; --blue2:#4f46e5; --dark:#26364d; --green:#16a34a; --orange:#d97706;
+  --shadow:0 12px 35px rgba(25,45,85,.08);
+}
 *{box-sizing:border-box}
-:root{--blue:#2563eb;--blue2:#7c3aed;--ink:#101828;--muted:#667085;--line:#e6eaf0;--bg:#f7f9fc;--card:#fff}
 html{scroll-behavior:smooth}
-body{margin:0;background:var(--bg);color:var(--ink);font:14px Inter,Arial,sans-serif}
-a{text-decoration:none;color:inherit}.w{max-width:1180px;margin:auto;padding:0 22px}
-header{background:rgba(255,255,255,.94);backdrop-filter:blur(12px);border-bottom:1px solid #e9edf3;position:sticky;top:0;z-index:50}
-.nav{height:70px;display:flex;align-items:center;justify-content:space-between}
-.logo{font-size:28px;font-weight:900;letter-spacing:-1.4px}.logo span{color:var(--blue)}
-nav{display:flex;gap:24px}nav a{color:#475467;font-weight:700;font-size:13px}nav a:hover{color:var(--blue)}
-.hero{position:relative;overflow:hidden;text-align:center;padding:72px 15px 48px;background:linear-gradient(180deg,#fff,#f7f9fc)}
-.hero:before,.hero:after{content:"";position:absolute;border-radius:50%;filter:blur(2px);pointer-events:none}
-.hero:before{width:330px;height:330px;background:#dbeafe;opacity:.55;left:-150px;top:-130px}
-.hero:after{width:300px;height:300px;background:#ede9fe;opacity:.55;right:-120px;top:-100px}
-.hero>*{position:relative;z-index:1}.pill{display:inline-flex;background:#eff6ff;color:#2563eb;padding:8px 14px;border:1px solid #dbeafe;border-radius:30px;font-weight:800;font-size:12px}
-h1{font-size:56px;max-width:850px;margin:20px auto 14px;line-height:1.03;letter-spacing:-3px}
-h1 span{background:linear-gradient(90deg,#2563eb,#7c3aed);-webkit-background-clip:text;background-clip:text;color:transparent}
-.hero p{color:#667085;font-size:17px;max-width:680px;margin:0 auto 26px;line-height:1.6}
-.search{max-width:700px;margin:auto;position:relative}.search input{width:100%;padding:17px 20px 17px 48px;border:1px solid #d9e0ea;border-radius:16px;font-size:15px;background:#fff;box-shadow:0 12px 35px rgba(16,24,40,.08);outline:none}
-.search b{position:absolute;left:18px;top:13px;font-size:21px}.quick{display:flex;gap:9px;justify-content:center;flex-wrap:wrap;margin-top:14px}
-.quick button{background:#fff;border:1px solid #e1e6ee;border-radius:10px;padding:8px 12px;color:#475467;cursor:pointer;font-weight:700}
-.section{padding:30px 0}.head{display:flex;align-items:end;justify-content:space-between;margin-bottom:16px}.head h2{margin:0;font-size:25px}.head p{margin:5px 0 0;color:#667085;font-size:13px}
-.grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px}
-.card{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:20px;box-shadow:0 8px 24px rgba(16,24,40,.05);transition:.18s;cursor:pointer}
-.card:hover{transform:translateY(-3px);box-shadow:0 15px 35px rgba(16,24,40,.09);border-color:#cbd8ff}
-.icon{width:42px;height:42px;border-radius:13px;display:grid;place-items:center;background:#eff6ff;font-size:21px;margin-bottom:14px}
-.card h3{margin:0 0 6px;font-size:16px}.card p{margin:0;color:#667085;line-height:1.5;font-size:12px}
-.badge{display:inline-block;margin-top:12px;background:#ecfdf3;color:#027a48;border-radius:20px;padding:5px 9px;font-size:11px;font-weight:800}
-.feature{position:relative;overflow:hidden;padding:22px;border-radius:18px;color:#fff;box-shadow:0 12px 28px rgba(16,24,40,.12)}
-.features{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:8px 0 28px}
-.feature:nth-child(1){background:linear-gradient(135deg,#111827,#1d4ed8)}.feature:nth-child(2){background:linear-gradient(135deg,#312e81,#4f46e5)}.feature:nth-child(3){background:linear-gradient(135deg,#0f172a,#334155)}
-.feature strong{display:block;margin-bottom:7px;font-size:15px}.feature span{color:#dbe4f0;font-size:12px;line-height:1.5}
-.toolbox{display:none;background:#fff;border:1px solid var(--line);border-radius:20px;padding:24px;box-shadow:0 12px 35px rgba(16,24,40,.08);margin-top:20px}
-.toolbox.active{display:block}.tooltop{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-bottom:18px}.tooltop h2{margin:0;font-size:24px}.close{border:0;background:#f2f4f7;border-radius:10px;padding:8px 11px;cursor:pointer;font-weight:800}
-.formgrid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}.field label{display:block;font-size:12px;font-weight:800;margin-bottom:6px;color:#344054}.field input,.field select{width:100%;padding:12px;border:1px solid #d0d5dd;border-radius:10px;font-size:14px;outline:none}.field input:focus,.field select:focus{border-color:#84a8ff;box-shadow:0 0 0 3px #eff6ff}
-.actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:17px}.primary{background:linear-gradient(90deg,#2563eb,#4f46e5);color:#fff;border:0;border-radius:10px;padding:11px 17px;font-weight:800;cursor:pointer}.secondary{background:#fff;border:1px solid #d0d5dd;border-radius:10px;padding:11px 17px;font-weight:800;cursor:pointer}
-.result{margin-top:18px;padding:18px;border-radius:14px;background:#f8faff;border:1px solid #dbe5ff}.result .big{font-size:27px;font-weight:900;color:#1d4ed8}.result p{margin:6px 0 0;color:#667085}
-.note{font-size:12px;color:#667085;margin-top:10px;line-height:1.5}
-footer{margin-top:45px;border-top:1px solid var(--line);padding:28px 0;color:#667085;font-size:12px;text-align:center}
-.hidden{display:none!important}
-@media(max-width:900px){.grid{grid-template-columns:repeat(2,1fr)}nav{gap:12px}.features{grid-template-columns:1fr}h1{font-size:43px}}
-@media(max-width:560px){.w{padding:0 14px}.nav{height:62px}nav{display:none}.grid{grid-template-columns:repeat(2,1fr);gap:10px}.card{padding:15px}.formgrid{grid-template-columns:1fr}.hero{padding-top:55px}h1{font-size:38px;letter-spacing:-2px}.head h2{font-size:21px}}
+body{
+  margin:0;background:var(--bg);color:var(--text);
+  font-family:Inter,Arial,sans-serif;
+  -webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;
+}
+button,input,select{font:inherit}
+button{cursor:pointer}
+a{text-decoration:none;color:inherit}
+header{
+  height:72px;background:#fff;border-bottom:1px solid var(--border);
+  display:flex;align-items:center;justify-content:space-between;padding:0 5%;
+  position:sticky;top:0;z-index:20;
+}
+.logo{font-size:30px;font-weight:800;letter-spacing:-1.5px}
+.logo span{color:#2563eb}
+nav{display:flex;gap:28px;font-size:14px;font-weight:700;color:#42526b}
+nav a:hover{color:#2457d6}
+.hero{max-width:1160px;margin:auto;padding:42px 20px 25px;text-align:center}
+.tagline{font-size:18px;color:#4f6078;margin:0 0 25px;font-weight:500}
+.search{
+  max-width:700px;margin:auto;background:#fff;border:1px solid #d7dfeb;border-radius:17px;
+  display:flex;align-items:center;gap:13px;padding:0 18px;box-shadow:0 8px 25px rgba(30,60,100,.05)
+}
+.search span{font-size:20px;color:#16243b}.search input{width:100%;border:0;outline:0;height:58px;font-size:16px;color:var(--text)}
+.quick{display:flex;justify-content:center;gap:10px;margin:14px 0 38px;flex-wrap:wrap}
+.quick button{background:#fff;border:1px solid var(--border);border-radius:11px;padding:8px 15px;color:#40516b;font-weight:600}
+.quick button:hover{border-color:#9fb5e8;color:#2457d6}
+.features{max-width:1160px;margin:0 auto 58px;padding:0 20px;display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.feature{border-radius:18px;padding:23px;color:white;min-height:105px;box-shadow:var(--shadow)}
+.feature:nth-child(1){background:linear-gradient(135deg,#172d67,#2558d5)}
+.feature:nth-child(2){background:linear-gradient(135deg,#3730a3,#5141e8)}
+.feature:nth-child(3){background:linear-gradient(135deg,#24344c,#334155)}
+.feature h3{margin:0 0 9px;font-size:15px}.feature p{margin:0;font-size:13px;line-height:1.55;opacity:.96}
+.container{max-width:1160px;margin:auto;padding:0 20px 70px}
+.section{margin-bottom:54px}.section-head{margin-bottom:16px}
+.section-head h2{font-size:27px;margin:0 0 6px;letter-spacing:-.6px}.section-head p{margin:0;color:var(--muted);font-size:14px}
+.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.card{
+  background:var(--card);border:1px solid var(--border);border-radius:17px;padding:22px;
+  box-shadow:0 5px 18px rgba(25,45,85,.035);min-height:205px;display:flex;flex-direction:column
+}
+.icon{width:42px;height:42px;border-radius:12px;background:#edf4ff;display:grid;place-items:center;font-size:23px;margin-bottom:14px}
+.card h3{font-size:16px;margin:0 0 8px}.card p{font-size:13px;line-height:1.55;color:#60708a;margin:0 0 15px;flex:1}
+.badge{display:inline-flex;align-items:center;width:max-content;border-radius:999px;padding:5px 10px;font-size:11px;font-weight:800}
+.working{background:#dcfce7;color:#15803d}.next{background:#fef3c7;color:#b45309}
+.tool-panel{
+  margin-top:14px;background:#fff;border:1px solid var(--border);border-radius:18px;padding:22px;box-shadow:var(--shadow);display:none
+}
+.tool-panel.active{display:block}
+.tool-panel h3{margin:0 0 5px;font-size:20px}.tool-panel .sub{margin:0 0 18px;color:var(--muted);font-size:13px}
+.form-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
+.field label{display:block;font-size:12px;font-weight:700;margin-bottom:6px;color:#42526b}
+.field input,.field select{width:100%;height:45px;border:1px solid #d5deea;border-radius:10px;padding:0 12px;outline:0;background:#fff;color:#14213d}
+.field input:focus,.field select:focus{border-color:#6b8de3;box-shadow:0 0 0 3px rgba(37,99,235,.09)}
+.actions{display:flex;gap:10px;margin-top:16px;flex-wrap:wrap}
+.primary,.secondary{border:0;border-radius:10px;padding:11px 17px;font-weight:700}
+.primary{background:#2457d6;color:#fff}.primary:hover{background:#1d4ed8}
+.secondary{background:#eef3fb;color:#30435f}
+.result{
+  margin-top:16px;background:#f3f7ff;border:1px solid #dbe6fb;border-radius:13px;padding:16px;display:none
+}
+.result.show{display:block}.result .big{font-size:25px;font-weight:800;color:#173b96;margin-bottom:5px}.result p{margin:4px 0;color:#53647b;font-size:13px}
+.calc-tabs{display:flex;gap:8px;margin-bottom:15px;flex-wrap:wrap}.calc-tabs button{border:1px solid var(--border);background:#fff;border-radius:9px;padding:8px 12px;font-weight:600;color:#53647b}.calc-tabs button.active{background:#2457d6;color:#fff;border-color:#2457d6}
+.hidden{display:none}
+footer{border-top:1px solid var(--border);background:#fff;padding:26px 20px;text-align:center;color:#6b7a90;font-size:12px}
+@media(max-width:900px){.grid{grid-template-columns:repeat(2,1fr)}.features{grid-template-columns:1fr}.feature{min-height:auto}}
+@media(max-width:600px){
+  header{height:64px;padding:0 18px}.logo{font-size:25px}nav{gap:12px;font-size:11px}
+  .hero{padding:30px 15px 20px}.tagline{font-size:15px;line-height:1.5}.search input{font-size:14px}.search{border-radius:14px}
+  .features{padding:0 15px;margin-bottom:40px}.container{padding:0 15px 50px}.grid{grid-template-columns:1fr}
+  .section-head h2{font-size:23px}.form-grid{grid-template-columns:1fr}.tool-panel{padding:17px}
+}
 </style>
 </head>
 <body>
-<header><div class="w nav">
+
+<header>
   <a class="logo" href="#">save<span>zo</span></a>
-  <nav><a href="#india">India Tools</a><a href="#student">Student</a><a href="#office">Office</a><a href="#tools">All Tools</a></nav>
-</div></header>
+  <nav>
+    <a href="#india">India Tools</a><a href="#student">Student</a><a href="#office">Office</a><a href="#all">All Tools</a>
+  </nav>
+</header>
 
 <section class="hero">
-  <div class="pill">⚡ Free everyday utility tools</div>
-  <h1>One place for <span>everyday tools.</span></h1>
-  <p>Simple, fast and useful calculators for work, study and daily life. No signup required.</p>
-  <div class="search"><b>⌕</b><input id="search" placeholder="Search tools like GST, salary, CTC, CGPA..." oninput="filterTools()"></div>
+  <p class="tagline">Simple, fast and useful calculators for work, study and daily life. No signup required.</p>
+  <div class="search"><span>⌕</span><input id="searchInput" type="search" placeholder="Search tools like GST, salary, CTC, CGPA..."></div>
   <div class="quick">
-    <button onclick="openTool('gstBox')">GST</button><button onclick="openTool('salaryBox')">Salary</button>
-    <button onclick="openTool('ctcBox')">CTC</button><button onclick="openTool('cgpaBox')">CGPA</button>
+    <button onclick="openTool('gstPanel')">GST</button>
+    <button onclick="openTool('salaryPanel')">Salary</button>
+    <button onclick="openTool('ctcPanel')">CTC</button>
+    <button onclick="openTool('cgpaPanel')">CGPA</button>
+    <button onclick="openTool('emiPanel')">EMI</button>
   </div>
 </section>
 
-<main class="w" id="tools">
 <section class="features">
-  <div class="feature"><strong>🇮🇳 India-ready</strong><span>GST, salary and CTC calculations designed for common Indian use cases.</span></div>
-  <div class="feature"><strong>⚡ Instant results</strong><span>Calculations happen in your browser with no signup or waiting.</span></div>
-  <div class="feature"><strong>🔒 Privacy-friendly</strong><span>Your calculator inputs stay in your browser for these tools.</span></div>
+  <div class="feature"><h3>🇮🇳 India-ready</h3><p>GST, salary and CTC calculations designed for common Indian use cases.</p></div>
+  <div class="feature"><h3>⚡ Instant results</h3><p>Calculations happen in your browser with no signup or waiting.</p></div>
+  <div class="feature"><h3>🔒 Privacy-friendly</h3><p>Your calculator inputs stay in your browser for these tools.</p></div>
 </section>
 
+<main class="container" id="all">
+
 <section class="section" id="india">
-  <div class="head"><div><h2>🇮🇳 India Tools</h2><p>Useful calculators for everyday money decisions.</p></div></div>
-  <div class="grid tool-grid">
-    <div class="card tool-card" data-name="gst tax calculator"><div class="icon">🧾</div><h3>GST Calculator</h3><p>Add or remove GST and see tax amount and final price.</p><span class="badge">WORKING</span></div>
-    <div class="card tool-card" data-name="salary calculator"><div class="icon">💰</div><h3>Salary Calculator</h3><p>Estimate monthly salary from annual CTC and deductions.</p><span class="badge">WORKING</span></div>
-    <div class="card tool-card" data-name="ctc calculator"><div class="icon">📊</div><h3>CTC Calculator</h3><p>Estimate annual CTC, monthly gross and employee deductions.</p><span class="badge">WORKING</span></div>
-    <div class="card tool-card" data-name="emi calculator"><div class="icon">🏦</div><h3>EMI Calculator</h3><p>Coming next — loan EMI, interest and total payment.</p><span class="badge">NEXT</span></div>
+  <div class="section-head"><h2>🇮🇳 India Tools</h2><p>Useful calculators for everyday money decisions.</p></div>
+  <div class="grid">
+    <div class="card tool-card" data-search="gst tax india">
+      <div class="icon">🧾</div><h3>GST Calculator</h3><p>Add or remove GST and see tax amount and final price.</p><span class="badge working">● WORKING</span>
+    </div>
+    <div class="card tool-card" data-search="salary income ctc monthly">
+      <div class="icon">💰</div><h3>Salary Calculator</h3><p>Estimate monthly salary from annual CTC and deductions.</p><span class="badge working">● WORKING</span>
+    </div>
+    <div class="card tool-card" data-search="ctc salary package">
+      <div class="icon">📊</div><h3>CTC Calculator</h3><p>Estimate annual CTC, monthly gross and employee deductions.</p><span class="badge working">● WORKING</span>
+    </div>
+    <div class="card tool-card" data-search="emi loan interest">
+      <div class="icon">🏦</div><h3>EMI Calculator</h3><p>Calculate loan EMI, total interest and total payment.</p><span class="badge working">● WORKING</span>
+    </div>
+  </div>
+
+  <div class="tool-panel" id="gstPanel">
+    <h3>🧾 GST Calculator</h3><p class="sub">Add GST to a base price or remove GST from an inclusive price.</p>
+    <div class="calc-tabs"><button class="active" onclick="gstMode('add',this)">Add GST</button><button onclick="gstMode('remove',this)">Remove GST</button></div>
+    <div class="form-grid">
+      <div class="field"><label id="gstPriceLabel">Base Price (₹)</label><input id="gstPrice" type="number" min="0" placeholder="1000"></div>
+      <div class="field"><label>GST Rate</label><select id="gstRate"><option value="5">5%</option><option value="12">12%</option><option value="18" selected>18%</option><option value="28">28%</option></select></div>
+    </div>
+    <div class="actions"><button class="primary" onclick="calcGST()">Calculate GST</button></div>
+    <div class="result" id="gstResult"></div>
+  </div>
+
+  <div class="tool-panel" id="salaryPanel">
+    <h3>💰 Salary Calculator</h3><p class="sub">Estimate monthly take-home from annual CTC.</p>
+    <div class="form-grid">
+      <div class="field"><label>Annual CTC (₹)</label><input id="salCtc" type="number" placeholder="600000"></div>
+      <div class="field"><label>Monthly deductions (₹)</label><input id="salDed" type="number" placeholder="5000"></div>
+      <div class="field"><label>Other monthly deductions (₹)</label><input id="salOther" type="number" placeholder="0"></div>
+    </div>
+    <div class="actions"><button class="primary" onclick="calcSalary()">Calculate Salary</button></div>
+    <div class="result" id="salaryResult"></div>
+  </div>
+
+  <div class="tool-panel" id="ctcPanel">
+    <h3>📊 CTC Calculator</h3><p class="sub">Build an estimated annual CTC from salary components.</p>
+    <div class="form-grid">
+      <div class="field"><label>Basic / month (₹)</label><input id="ctcBasic" type="number" placeholder="25000"></div>
+      <div class="field"><label>HRA / month (₹)</label><input id="ctcHra" type="number" placeholder="10000"></div>
+      <div class="field"><label>Other allowances / month (₹)</label><input id="ctcAllow" type="number" placeholder="8000"></div>
+      <div class="field"><label>Employer PF / month (₹)</label><input id="ctcPf" type="number" placeholder="3000"></div>
+      <div class="field"><label>Annual bonus (₹)</label><input id="ctcBonus" type="number" placeholder="30000"></div>
+    </div>
+    <div class="actions"><button class="primary" onclick="calcCTC()">Calculate CTC</button></div>
+    <div class="result" id="ctcResult"></div>
+  </div>
+
+  <div class="tool-panel" id="emiPanel">
+    <h3>🏦 EMI Calculator</h3><p class="sub">Calculate monthly EMI, total interest and total repayment.</p>
+    <div class="form-grid">
+      <div class="field"><label>Loan Amount (₹)</label><input id="emiLoan" type="number" placeholder="500000"></div>
+      <div class="field"><label>Annual Interest Rate (%)</label><input id="emiRate" type="number" step="0.01" placeholder="10"></div>
+      <div class="field"><label>Loan Tenure (years)</label><input id="emiYears" type="number" step="0.5" placeholder="5"></div>
+    </div>
+    <div class="actions"><button class="primary" onclick="calcEMI()">Calculate EMI</button></div>
+    <div class="result" id="emiResult"></div>
   </div>
 </section>
 
 <section class="section" id="student">
-  <div class="head"><div><h2>🎓 Student Tools</h2><p>Quick tools for marks, grades and study calculations.</p></div></div>
-  <div class="grid tool-grid">
-    <div class="card tool-card" data-name="cgpa percentage calculator"><div class="icon">🎓</div><h3>CGPA → Percentage</h3><p>Convert CGPA to percentage using your chosen multiplier.</p><span class="badge">WORKING</span></div>
-    <div class="card tool-card" data-name="percentage calculator"><div class="icon">%</div><h3>Percentage Calculator</h3><p>Coming next — percentage, increase and decrease.</p><span class="badge">NEXT</span></div>
-    <div class="card tool-card" data-name="attendance calculator"><div class="icon">📅</div><h3>Attendance Calculator</h3><p>Coming next — attendance percentage and classes needed.</p><span class="badge">NEXT</span></div>
-    <div class="card tool-card" data-name="gpa calculator"><div class="icon">📚</div><h3>GPA Calculator</h3><p>Coming next — weighted grade point calculation.</p><span class="badge">NEXT</span></div>
+  <div class="section-head"><h2>🎓 Student Tools</h2><p>Quick tools for marks, grades and study calculations.</p></div>
+  <div class="grid">
+    <div class="card tool-card" data-search="cgpa percentage student marks">
+      <div class="icon">🎓</div><h3>CGPA → Percentage</h3><p>Convert CGPA to percentage using your chosen multiplier.</p><span class="badge working">● WORKING</span>
+    </div>
+    <div class="card tool-card" data-search="percentage increase decrease marks">
+      <div class="icon">%</div><h3>Percentage Calculator</h3><p>Calculate percentage, increase, decrease and change.</p><span class="badge working">● WORKING</span>
+    </div>
+    <div class="card tool-card" data-search="attendance student classes">
+      <div class="icon">📅</div><h3>Attendance Calculator</h3><p>Find attendance percentage and classes needed to reach a target.</p><span class="badge working">● WORKING</span>
+    </div>
+    <div class="card tool-card" data-search="gpa grade point">
+      <div class="icon">📚</div><h3>GPA Calculator</h3><p>Calculate a simple weighted GPA from grade points and credits.</p><span class="badge working">● WORKING</span>
+    </div>
+  </div>
+
+  <div class="tool-panel" id="cgpaPanel">
+    <h3>🎓 CGPA → Percentage</h3><p class="sub">Use the multiplier prescribed by your institution. 9.5 is a common example.</p>
+    <div class="form-grid"><div class="field"><label>CGPA</label><input id="cgpa" type="number" min="0" max="10" step="0.01" placeholder="8.2"></div><div class="field"><label>Multiplier</label><select id="cgpaMul"><option value="9.5" selected>9.5</option><option value="10">10</option><option value="9">9</option></select></div></div>
+    <div class="actions"><button class="primary" onclick="calcCGPA()">Convert</button></div><div class="result" id="cgpaResult"></div>
+  </div>
+
+  <div class="tool-panel" id="percentagePanel">
+    <h3>% Percentage Calculator</h3><p class="sub">Calculate percentage of a value or compare two values.</p>
+    <div class="calc-tabs"><button class="active" onclick="pctMode('of',this)">X% of Y</button><button onclick="pctMode('change',this)">% Change</button></div>
+    <div id="pctOfForm" class="form-grid"><div class="field"><label>Percentage (%)</label><input id="pctX" type="number" placeholder="20"></div><div class="field"><label>Value</label><input id="pctY" type="number" placeholder="500"></div></div>
+    <div id="pctChangeForm" class="form-grid hidden"><div class="field"><label>Original Value</label><input id="pctOld" type="number" placeholder="500"></div><div class="field"><label>New Value</label><input id="pctNew" type="number" placeholder="650"></div></div>
+    <div class="actions"><button class="primary" onclick="calcPercentage()">Calculate</button></div><div class="result" id="pctResult"></div>
+  </div>
+
+  <div class="tool-panel" id="attendancePanel">
+    <h3>📅 Attendance Calculator</h3><p class="sub">Calculate current attendance and classes required to reach a target.</p>
+    <div class="form-grid"><div class="field"><label>Classes Attended</label><input id="attPresent" type="number" min="0" placeholder="35"></div><div class="field"><label>Total Classes</label><input id="attTotal" type="number" min="1" placeholder="40"></div><div class="field"><label>Target Attendance (%)</label><input id="attTarget" type="number" min="0" max="100" value="75"></div></div>
+    <div class="actions"><button class="primary" onclick="calcAttendance()">Calculate</button></div><div class="result" id="attResult"></div>
+  </div>
+
+  <div class="tool-panel" id="gpaPanel">
+    <h3>📚 GPA Calculator</h3><p class="sub">Enter up to 6 subjects with grade points and credits.</p>
+    <div id="gpaRows"></div>
+    <div class="actions"><button class="secondary" onclick="addGpaRow()">+ Add Subject</button><button class="primary" onclick="calcGPA()">Calculate GPA</button></div><div class="result" id="gpaResult"></div>
   </div>
 </section>
 
 <section class="section" id="office">
-  <div class="head"><div><h2>💼 Office Tools</h2><p>Simple tools for everyday office work.</p></div></div>
-  <div class="grid tool-grid">
-    <div class="card tool-card" data-name="working days calculator"><div class="icon">🗓️</div><h3>Working Days</h3><p>Coming next — count working days between dates.</p><span class="badge">NEXT</span></div>
-    <div class="card tool-card" data-name="age calculator"><div class="icon">🎂</div><h3>Age Calculator</h3><p>Coming next — exact age in years, months and days.</p><span class="badge">NEXT</span></div>
-    <div class="card tool-card" data-name="date difference"><div class="icon">⏱️</div><h3>Date Difference</h3><p>Coming next — calculate the gap between two dates.</p><span class="badge">NEXT</span></div>
-    <div class="card tool-card" data-name="leave calculator"><div class="icon">🏖️</div><h3>Leave Calculator</h3><p>Coming next — plan leave days and working days.</p><span class="badge">NEXT</span></div>
+  <div class="section-head"><h2>💼 Office Tools</h2><p>Simple tools for everyday office work.</p></div>
+  <div class="grid">
+    <div class="card tool-card" data-search="working days office dates">
+      <div class="icon">🗓️</div><h3>Working Days</h3><p>Count weekdays between two dates, with optional holidays.</p><span class="badge working">● WORKING</span>
+    </div>
+    <div class="card tool-card" data-search="age birthday date">
+      <div class="icon">🎂</div><h3>Age Calculator</h3><p>Calculate exact age in years, months and days.</p><span class="badge working">● WORKING</span>
+    </div>
+    <div class="card tool-card" data-search="date difference days">
+      <div class="icon">⏱️</div><h3>Date Difference</h3><p>Calculate the gap between two dates.</p><span class="badge next">● NEXT</span>
+    </div>
+    <div class="card tool-card" data-search="leave holiday office">
+      <div class="icon">🏖️</div><h3>Leave Calculator</h3><p>Plan leave days and working days.</p><span class="badge next">● NEXT</span>
+    </div>
+  </div>
+
+  <div class="tool-panel" id="workingPanel">
+    <h3>🗓️ Working Days Calculator</h3><p class="sub">Counts Monday–Friday. Add holidays as comma-separated dates in YYYY-MM-DD format.</p>
+    <div class="form-grid"><div class="field"><label>Start Date</label><input id="workStart" type="date"></div><div class="field"><label>End Date</label><input id="workEnd" type="date"></div><div class="field"><label>Holidays (optional)</label><input id="workHolidays" placeholder="2026-10-02, 2026-10-20"></div></div>
+    <div class="actions"><button class="primary" onclick="calcWorkingDays()">Calculate</button></div><div class="result" id="workResult"></div>
+  </div>
+
+  <div class="tool-panel" id="agePanel">
+    <h3>🎂 Age Calculator</h3><p class="sub">Calculate age precisely from date of birth to a selected date.</p>
+    <div class="form-grid"><div class="field"><label>Date of Birth</label><input id="dob" type="date"></div><div class="field"><label>Age On</label><input id="ageOn" type="date"></div></div>
+    <div class="actions"><button class="primary" onclick="calcAge()">Calculate Age</button></div><div class="result" id="ageResult"></div>
   </div>
 </section>
 
-<div id="gstBox" class="toolbox">
-  <div class="tooltop"><h2>🧾 GST Calculator</h2><button class="close" onclick="closeTools()">✕</button></div>
-  <div class="formgrid">
-    <div class="field"><label>Amount (₹)</label><input id="gstAmount" type="number" min="0" placeholder="1000"></div>
-    <div class="field"><label>GST Rate</label><select id="gstRate"><option value="5">5%</option><option value="12">12%</option><option value="18" selected>18%</option><option value="28">28%</option></select></div>
-    <div class="field"><label>Calculation</label><select id="gstMode"><option value="add">Add GST to amount</option><option value="remove">Remove GST from inclusive amount</option></select></div>
-  </div>
-  <div class="actions"><button class="primary" onclick="calcGST()">Calculate GST</button><button class="secondary" onclick="resetBox('gstBox')">Reset</button></div>
-  <div id="gstResult" class="result hidden"></div>
-</div>
-
-<div id="salaryBox" class="toolbox">
-  <div class="tooltop"><h2>💰 Salary Calculator</h2><button class="close" onclick="closeTools()">✕</button></div>
-  <div class="formgrid">
-    <div class="field"><label>Annual CTC (₹)</label><input id="salaryCtc" type="number" min="0" placeholder="600000"></div>
-    <div class="field"><label>Monthly deductions (₹)</label><input id="salaryDed" type="number" min="0" value="0"></div>
-    <div class="field"><label>Other monthly deductions (₹)</label><input id="salaryOther" type="number" min="0" value="0"></div>
-  </div>
-  <div class="actions"><button class="primary" onclick="calcSalary()">Calculate Salary</button><button class="secondary" onclick="resetBox('salaryBox')">Reset</button></div>
-  <div id="salaryResult" class="result hidden"></div>
-  <div class="note">This is a simple estimate. Actual take-home depends on your payroll structure, tax regime, PF, professional tax and other components.</div>
-</div>
-
-<div id="ctcBox" class="toolbox">
-  <div class="tooltop"><h2>📊 CTC Calculator</h2><button class="close" onclick="closeTools()">✕</button></div>
-  <div class="formgrid">
-    <div class="field"><label>Basic monthly salary (₹)</label><input id="ctcBasic" type="number" min="0" placeholder="25000"></div>
-    <div class="field"><label>HRA monthly (₹)</label><input id="ctcHra" type="number" min="0" placeholder="10000"></div>
-    <div class="field"><label>Other monthly allowances (₹)</label><input id="ctcOther" type="number" min="0" placeholder="5000"></div>
-    <div class="field"><label>Employer PF monthly (₹)</label><input id="ctcPf" type="number" min="0" placeholder="3000"></div>
-    <div class="field"><label>Annual bonus (₹)</label><input id="ctcBonus" type="number" min="0" value="0"></div>
-  </div>
-  <div class="actions"><button class="primary" onclick="calcCTC()">Calculate CTC</button><button class="secondary" onclick="resetBox('ctcBox')">Reset</button></div>
-  <div id="ctcResult" class="result hidden"></div>
-</div>
-
-<div id="cgpaBox" class="toolbox">
-  <div class="tooltop"><h2>🎓 CGPA → Percentage</h2><button class="close" onclick="closeTools()">✕</button></div>
-  <div class="formgrid">
-    <div class="field"><label>CGPA</label><input id="cgpa" type="number" min="0" max="10" step="0.01" placeholder="8.2"></div>
-    <div class="field"><label>Multiplier</label><select id="cgpaMul"><option value="9.5" selected>9.5 (common)</option><option value="10">10</option><option value="9">9</option></select></div>
-  </div>
-  <div class="actions"><button class="primary" onclick="calcCGPA()">Convert</button><button class="secondary" onclick="resetBox('cgpaBox')">Reset</button></div>
-  <div id="cgpaResult" class="result hidden"></div>
-  <div class="note">Use the multiplier prescribed by your school, college or university when one is specified.</div>
-</div>
 </main>
 
 <footer>© 2026 Savezo · Free everyday utility tools · More tools coming soon.</footer>
 
 <script>
-function money(n){return new Intl.NumberFormat('en-IN',{style:'currency',currency:'INR',maximumFractionDigits:2}).format(n)}
+const panels=['gstPanel','salaryPanel','ctcPanel','emiPanel','cgpaPanel','percentagePanel','attendancePanel','gpaPanel','workingPanel','agePanel'];
+
 function openTool(id){
-  document.querySelectorAll('.toolbox').forEach(x=>x.classList.remove('active'));
-  const el=document.getElementById(id); if(el){el.classList.add('active');el.scrollIntoView({behavior:'smooth',block:'center'})}
+  panels.forEach(p=>document.getElementById(p)?.classList.remove('active'));
+  const el=document.getElementById(id); if(el){el.classList.add('active'); el.scrollIntoView({behavior:'smooth',block:'center'});}
 }
-function closeTools(){document.querySelectorAll('.toolbox').forEach(x=>x.classList.remove('active'))}
-function resetBox(id){
-  const box=document.getElementById(id);
-  box.querySelectorAll('input').forEach(i=>{if(i.type==='number') i.value=i.id.includes('salaryDed')||i.id.includes('salaryOther')||i.id.includes('ctcBonus')?'0':''});
-  box.querySelectorAll('.result').forEach(r=>{r.classList.add('hidden');r.innerHTML=''});
-}
+function money(n){return new Intl.NumberFormat('en-IN',{style:'currency',currency:'INR',maximumFractionDigits:2}).format(Number(n)||0)}
+function num(id){return parseFloat(document.getElementById(id).value)||0}
+function show(id,html){const e=document.getElementById(id);e.innerHTML=html;e.classList.add('show')}
+
+let gstAdd=true;
+function gstMode(mode,btn){gstAdd=mode==='add';document.querySelectorAll('#gstPanel .calc-tabs button').forEach(b=>b.classList.remove('active'));btn.classList.add('active');document.getElementById('gstPriceLabel').textContent=gstAdd?'Base Price (₹)':'Price Including GST (₹)'}
 function calcGST(){
-  const amount=Number(document.getElementById('gstAmount').value), rate=Number(document.getElementById('gstRate').value), mode=document.getElementById('gstMode').value;
-  if(amount<0||!Number.isFinite(amount)){alert('Enter a valid amount.');return}
-  let base,tax,total;
-  if(mode==='add'){base=amount;tax=amount*rate/100;total=amount+tax}
-  else{total=amount;base=amount/(1+rate/100);tax=total-base}
-  const r=document.getElementById('gstResult');r.classList.remove('hidden');
-  r.innerHTML=`<div class="big">${money(total)}</div><p>Base amount: <b>${money(base)}</b> · GST: <b>${money(tax)}</b> · Rate: <b>${rate}%</b></p>`;
+ const price=num('gstPrice'),rate=num('gstRate'),r=rate/100;
+ if(price<=0)return show('gstResult','Enter a valid price.');
+ if(gstAdd){const tax=price*r;show('gstResult',`<div class="big">${money(price+tax)}</div><p>GST: ${money(tax)} (${rate}%)</p><p>Base price: ${money(price)}</p>`)}
+ else{const base=price/(1+r),tax=price-base;show('gstResult',`<div class="big">${money(base)}</div><p>GST included: ${money(tax)} (${rate}%)</p><p>Final price: ${money(price)}</p>`)}
 }
 function calcSalary(){
-  const ctc=Number(document.getElementById('salaryCtc').value), ded=Number(document.getElementById('salaryDed').value)||0, other=Number(document.getElementById('salaryOther').value)||0;
-  if(ctc<=0){alert('Enter annual CTC.');return}
-  const gross=ctc/12, take=gross-ded-other;
-  const r=document.getElementById('salaryResult');r.classList.remove('hidden');
-  r.innerHTML=`<div class="big">${money(Math.max(0,take))} / month</div><p>Estimated monthly gross: <b>${money(gross)}</b> · Total monthly deductions: <b>${money(ded+other)}</b></p>`;
+ const ctc=num('salCtc'),ded=num('salDed'),other=num('salOther'); if(ctc<=0)return show('salaryResult','Enter annual CTC.');
+ const gross=ctc/12,take=Math.max(0,gross-ded-other);
+ show('salaryResult',`<div class="big">${money(take)} / month</div><p>Estimated monthly gross: ${money(gross)}</p><p>Total monthly deductions: ${money(ded+other)}</p><p>Estimated annual take-home: ${money(take*12)}</p>`);
 }
 function calcCTC(){
-  const basic=Number(document.getElementById('ctcBasic').value)||0,hra=Number(document.getElementById('ctcHra').value)||0,other=Number(document.getElementById('ctcOther').value)||0,pf=Number(document.getElementById('ctcPf').value)||0,bonus=Number(document.getElementById('ctcBonus').value)||0;
-  const monthlyGross=basic+hra+other, annualGross=monthlyGross*12, annualCtc=annualGross+pf*12+bonus;
-  if(annualCtc<=0){alert('Enter salary components.');return}
-  const r=document.getElementById('ctcResult');r.classList.remove('hidden');
-  r.innerHTML=`<div class="big">${money(annualCtc)} / year</div><p>Monthly gross: <b>${money(monthlyGross)}</b> · Annual gross: <b>${money(annualGross)}</b> · Employer PF: <b>${money(pf*12)}</b> · Bonus: <b>${money(bonus)}</b></p>`;
+ const basic=num('ctcBasic'),hra=num('ctcHra'),allow=num('ctcAllow'),pf=num('ctcPf'),bonus=num('ctcBonus');
+ const gross=basic+hra+allow, annualGross=gross*12, ctc=annualGross+pf*12+bonus;
+ show('ctcResult',`<div class="big">${money(ctc)} / year</div><p>Monthly gross: ${money(gross)}</p><p>Annual gross: ${money(annualGross)}</p><p>Employer PF: ${money(pf*12)}</p><p>Annual bonus: ${money(bonus)}</p>`);
 }
-function calcCGPA(){
-  const cg=Number(document.getElementById('cgpa').value),mul=Number(document.getElementById('cgpaMul').value);
-  if(cg<0||cg>10){alert('Enter CGPA between 0 and 10.');return}
-  const pct=cg*mul;const r=document.getElementById('cgpaResult');r.classList.remove('hidden');
-  r.innerHTML=`<div class="big">${pct.toFixed(2)}%</div><p>CGPA: <b>${cg.toFixed(2)}</b> × multiplier: <b>${mul}</b></p>`;
+function calcEMI(){
+ const P=num('emiLoan'),annual=num('emiRate'),years=num('emiYears'); if(P<=0||years<=0)return show('emiResult','Enter valid loan amount and tenure.');
+ const n=years*12,r=annual/100/12;
+ const emi=r===0?P/n:P*r*Math.pow(1+r,n)/(Math.pow(1+r,n)-1);
+ const total=emi*n;
+ show('emiResult',`<div class="big">${money(emi)} / month</div><p>Total payment: ${money(total)}</p><p>Total interest: ${money(total-P)}</p><p>Tenure: ${n} months</p>`);
 }
-function filterTools(){
-  const q=document.getElementById('search').value.toLowerCase().trim();
-  document.querySelectorAll('.tool-card').forEach(c=>{c.style.display=!q||c.dataset.name.includes(q)?'block':'none'});
+function calcCGPA(){const c=num('cgpa'),m=num('cgpaMul');if(c<0)return show('cgpaResult','Enter a valid CGPA.');show('cgpaResult',`<div class="big">${(c*m).toFixed(2)}%</div><p>${c.toFixed(2)} × ${m}</p><p>Use your institution's prescribed conversion method where applicable.</p>`)}
+let pctChange=false;
+function pctMode(mode,btn){pctChange=mode==='change';document.querySelectorAll('#percentagePanel .calc-tabs button').forEach(b=>b.classList.remove('active'));btn.classList.add('active');document.getElementById('pctOfForm').classList.toggle('hidden',pctChange);document.getElementById('pctChangeForm').classList.toggle('hidden',!pctChange)}
+function calcPercentage(){
+ if(!pctChange){const x=num('pctX'),y=num('pctY');show('pctResult',`<div class="big">${(x*y/100).toFixed(2)}</div><p>${x}% of ${y} = ${(x*y/100).toFixed(2)}</p>`)}
+ else{const old=num('pctOld'),nw=num('pctNew');if(old===0)return show('pctResult','Original value cannot be zero.');const ch=(nw-old)/old*100;show('pctResult',`<div class="big">${ch.toFixed(2)}%</div><p>${ch>=0?'Increase':'Decrease'} from ${old} to ${nw}.</p>`)}
 }
-document.querySelectorAll('.tool-card').forEach(card=>{
-  card.addEventListener('click',()=>{
-    const n=card.dataset.name;
-    if(n.includes('gst'))openTool('gstBox');
-    else if(n.includes('salary'))openTool('salaryBox');
-    else if(n.includes('ctc'))openTool('ctcBox');
-    else if(n.includes('cgpa'))openTool('cgpaBox');
-    else alert('This tool is coming next. Savezo V7 is adding tools step by step.');
-  });
+function calcAttendance(){
+ const p=num('attPresent'),t=num('attTotal'),target=num('attTarget');if(t<=0||p>t)return show('attResult','Enter valid attendance values.');
+ const current=p/t*100; let msg=`Current attendance: ${current.toFixed(2)}%.`;
+ if(current>=target) msg+=` You are already at or above the ${target}% target.`;
+ else{let x=0;while((p+x)/(t+x)*100<target&&x<10000)x++;msg+=` You need to attend ${x} consecutive classes to reach ${target}%.`;}
+ show('attResult',`<div class="big">${current.toFixed(2)}%</div><p>${msg}</p>`);
+}
+function addGpaRow(){
+ const wrap=document.getElementById('gpaRows'); if(wrap.children.length>=6)return;
+ const row=document.createElement('div');row.className='form-grid';row.style.marginBottom='10px';
+ row.innerHTML=`<div class="field"><label>Grade Point</label><input class="gp" type="number" min="0" max="10" step=".01" placeholder="8"></div><div class="field"><label>Credits</label><input class="cr" type="number" min="0" step=".5" placeholder="3"></div>`;
+ wrap.appendChild(row);
+}
+for(let i=0;i<3;i++)addGpaRow();
+function calcGPA(){const gps=[...document.querySelectorAll('.gp')].map(x=>parseFloat(x.value)||0),cr=[...document.querySelectorAll('.cr')].map(x=>parseFloat(x.value)||0);const total=cr.reduce((a,b)=>a+b,0);if(!total)return show('gpaResult','Enter credits and grade points.');const g=gps.reduce((s,x,i)=>s+x*cr[i],0)/total;show('gpaResult',`<div class="big">${g.toFixed(2)} GPA</div><p>Total credits: ${total}</p>`)}
+function calcWorkingDays(){
+ const s=document.getElementById('workStart').value,e=document.getElementById('workEnd').value;if(!s||!e)return show('workResult','Select both dates.');
+ let start=new Date(s+'T00:00:00'),end=new Date(e+'T00:00:00');if(start>end)[start,end]=[end,start];
+ const holidays=new Set(document.getElementById('workHolidays').value.split(',').map(x=>x.trim()).filter(Boolean));let count=0,total=0;
+ for(let d=new Date(start);d<=end;d.setDate(d.getDate()+1)){total++;const day=d.getDay(),iso=d.toISOString().slice(0,10);if(day!==0&&day!==6&&!holidays.has(iso))count++}
+ show('workResult',`<div class="big">${count} working days</div><p>Total calendar days: ${total}</p><p>Weekend days excluded. Listed holidays excluded.</p>`);
+}
+function calcAge(){
+ const dob=document.getElementById('dob').value,on=document.getElementById('ageOn').value;if(!dob||!on)return show('ageResult','Select both dates.');
+ let a=new Date(dob+'T00:00:00'),b=new Date(on+'T00:00:00');if(a>b)return show('ageResult','Age On date must be after Date of Birth.');
+ let y=b.getFullYear()-a.getFullYear(),m=b.getMonth()-a.getMonth(),d=b.getDate()-a.getDate();
+ if(d<0){m--;d+=new Date(b.getFullYear(),b.getMonth(),0).getDate()} if(m<0){y--;m+=12}
+ show('ageResult',`<div class="big">${y} years, ${m} months, ${d} days</div><p>Calculated from ${dob} to ${on}.</p>`);
+}
+const searchInput=document.getElementById('searchInput');
+searchInput.addEventListener('input',()=>{
+ const q=searchInput.value.toLowerCase().trim();
+ document.querySelectorAll('.tool-card').forEach(card=>{card.style.display=!q||card.innerText.toLowerCase().includes(q)||card.dataset.search.includes(q)?'flex':'none'});
 });
+document.querySelectorAll('.tool-card').forEach(card=>{
+ card.addEventListener('click',()=>{
+   const title=card.querySelector('h3')?.innerText||'';
+   const map={'GST Calculator':'gstPanel','Salary Calculator':'salaryPanel','CTC Calculator':'ctcPanel','EMI Calculator':'emiPanel','CGPA → Percentage':'cgpaPanel','Percentage Calculator':'percentagePanel','Attendance Calculator':'attendancePanel','GPA Calculator':'gpaPanel','Working Days':'workingPanel','Age Calculator':'agePanel'};
+   if(map[title])openTool(map[title]);
+ });
+});
+const today=new Date();document.getElementById('ageOn').value=today.toISOString().slice(0,10);
+document.getElementById('workStart').value=today.toISOString().slice(0,10);
+document.getElementById('workEnd').value=today.toISOString().slice(0,10);
 </script>
 </body>
 </html>
