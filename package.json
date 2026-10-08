@@ -1,0 +1,16 @@
+{
+  "name": "savezo",
+  "version": "1.0.1",
+  "private": true,
+  "main": "server.js",
+  "engines": {
+    "node": "22.x"
+  },
+  "scripts": {
+    "build": "echo build",
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "express": "^4.21.2"
+  }
+}
