@@ -1,6 +1,0 @@
-https://savezo-production.up.railway.app/
-https://savezo-production.up.railway.app/about.html
-https://savezo-production.up.railway.app/contact.html
-https://savezo-production.up.railway.app/privacy.html
-https://savezo-production.up.railway.app/terms.html
-https://savezo-production.up.railway.app/disclaimer.html
